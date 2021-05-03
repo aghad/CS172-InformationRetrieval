@@ -3,9 +3,6 @@
 ## Team member 1 - Kevin Ni
 ## Team member 2 - Aden Ghadimi
 
-
-#Provide a short explanation of your design.
-
 Exrtacted all the data from the corpus of the regular expressions. 
 Developed a hashmap to store the values and i.d's.
 While we're iterating through the corpus.
