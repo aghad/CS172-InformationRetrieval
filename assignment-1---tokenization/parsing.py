@@ -125,8 +125,8 @@ for file in allfiles:
             doc_ID_counter = doc_ID_counter + 1
             
             ## CHECK TO BE DELETED
-            # if (doc_Index[docno] >= 2):
-                # continue
+            if (doc_Index[docno] >= 2):
+                continue
             
             
             ## Lowercase the word
