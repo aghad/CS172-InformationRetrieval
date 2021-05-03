@@ -15,8 +15,6 @@ token_regex = re.compile(r"\w+(\.?\'?\,?\w+)*")
 doc_ID_counter = 1
 term_ID_counter = 1
 
-write = False
-
 # A hashmap of term -> ID
 term_Index = dict()
 # A hashmap of doc -> doc_node
@@ -246,9 +244,6 @@ def write_to_disk():
 def process_commands(**user_input):
     
     print()
-    
-    if write is True:
-        write_to_disk()
 
     if "term" in user_input and "doc" in user_input:
         input_term = user_input["term"]
@@ -292,8 +287,8 @@ def set_write(**user_input):
         input_write = user_input["write"]
         input_write = input_write.lower()
         if input_write == "true" or input_write == "1" or input_write == "t":
-            global write
-            write = True
+            print()
+            write_to_disk()
     
 def main():
     return
