@@ -51,9 +51,7 @@ open the index file up, and traverse
 #Regualr expressions to extract data from the corpus
 
 #Hashmap of terms -> ID
-
 #Hashmaps of documents -> ID
-
 #Hashmaps of terms -> term_node
 
 #Initalize classes
