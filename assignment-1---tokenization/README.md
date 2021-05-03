@@ -56,5 +56,8 @@ Step 4: Check if NLTK is installed
 Afterwards, Clone Repository, and run on either command prompt or the IDE of your choosing. 
 
 #if you attempted the extra credit (stemming), etc. 
+Traverse through index file up, and 
+Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt while traversing in each txt file. 
+
 Run this any of these commands to query the data:$ python read_index.py --term TERM | python read_index.py --doc DOCUMENT_NAME | $ python read_index.py --term TERM --doc DOCUMENT_NAME | $a --write True
 
