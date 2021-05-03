@@ -38,8 +38,8 @@ Add the total words
 
 
 For the Extra Credit
-Open the index file up, and traverse. 
-Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt.
+Traverse through index file up, and 
+Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt while traversing in each txt file. 
 
 
 We developed this in python, and you must the download packages for installing NLTK. 
