@@ -65,4 +65,7 @@ Step 4: Check if NLTK is installed
 "$python import nltk"
 Afterwards, Clone Repository, and run on either command prompt or the IDE of your choosing. 
 
+
 #if you attempted the extra credit (stemming), etc. 
+Run this any of these commands to query the data:$ python read_index.py --term TERM | python read_index.py --doc DOCUMENT_NAME | $ python read_index.py --term TERM --doc DOCUMENT_NAME | $a --write True
+
