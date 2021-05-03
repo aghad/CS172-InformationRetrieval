@@ -131,11 +131,6 @@ for file in allfiles:
             doc_Index[docno] = Doc_Node(doc_ID_counter)
             doc_ID_counter = doc_ID_counter + 1
             
-            ## CHECK TO BE DELETED
-            if (doc_Index[docno].get_ID() >= 2):
-                continue
-            
-            
             ## Lowercase the word
             text = text.lower();
             
@@ -241,6 +236,7 @@ def write_to_disk():
     
     print("* Writing To Disk Complete *")
 
+# Part 3
 def process_commands(**user_input):
     
     print()
