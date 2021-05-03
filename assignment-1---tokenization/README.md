@@ -7,8 +7,33 @@
 #Provide a short explanation of your design.
 
 #Exrtacted all the data from the corpus of the regular expressions. 
-#Developed a hashmap of the id's within the dictionary.
-While we're iterating through the corpus, 
+#Developed a hashmap to store the values and i.d's.
+While we're iterating through the corpus.
+
+Initalized the stop.words, and retrieved the names of all files to be indexed within the folder ./ap89_collection_small of the current directory.
+As we traverse through the files, we retrieve the contents of the DOCNO tag, then the TEXT tag.
+
+#Part1: Check repeated documents 
+#New document ID
+#Check to be deleted
+#Lowercase the words
+#Process the text string
+#Traverse throughout, while removing apostrophe ****?****
+#Remove stop-words
+#Stemming
+#Add the token to our list 
+
+
+#Part2: Create tokens
+Match the unique term within the ID, and if the token is not in the term_index, then you would add to the counter.
+#Set up the term information
+#Add the position of the counter
+#Add the total words
+
+
+
+#Extra Credit
+open the index file up, and traverse 
 
 
 
