@@ -3,14 +3,61 @@
 ## Team member 1 - Kevin Ni
 ## Team member 2 - Aden Ghadimi
 
+Exrtacted all the data from the corpus of the regular expressions. 
+Developed a hashmap to store the values and i.d's.
+Regular expressions to extract data from the corpus
+Hashmap of terms -> ID
+Hashmaps of documents -> ID
+Hashmaps of terms -> term_node
 
-######Provide a short explanation of your design.
+While we're iterating through the corpus.
+
+Initalized the stop.words, and retrieved the names of all files to be indexed within the folder ./ap89_collection_small of the current directory.
+As we traverse through the files, we retrieve the contents of the DOCNO tag, then the TEXT tag.
+
+Part1: Check repeated documents 
+New document ID
+Check to be deleted
+Lowercase the words
+Process the text string
+Traverse throughout, while removing apostrophe ****?****
+Remove stop-words
+Stemming
+Add the token to our list.
+Building term_docids.txt 
+Building termidis.txt
+Process the text string
 
 
-######Python 
+
+Part2: Create tokens
+Match the unique term within the ID, and if the token is not in the term_index, then you would add to the counter.
+Set up the term information
+Add the position of the counter
+Add the total words
 
 
+For the Extra Credit
+Traverse through index file up, and 
+Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt while traversing in each txt file. 
 
 
+We developed this in python, and you must the download packages for installing NLTK. 
+Here are the instructions. 
+Installing NLTK on Windows 10
+Step 1:Check Python Version.
+"$python --version"
+Step 2: Install Numpy
+"$pip install numpy"
+Step 3: Install NLTK
+"$pip install nltk"
+Step 4: Check if NLTK is installed 
+"$python import nltk"
+Afterwards, Clone Repository, and run on either command prompt or the IDE of your choosing. 
 
 #if you attempted the extra credit (stemming), etc. 
+Traverse through index file up, and 
+Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt while traversing in each txt file. 
+
+Run this any of these commands to query the data:$ python read_index.py --term TERM | python read_index.py --doc DOCUMENT_NAME | $ python read_index.py --term TERM --doc DOCUMENT_NAME | $a --write True
+
