@@ -5,6 +5,11 @@
 
 Exrtacted all the data from the corpus of the regular expressions. 
 Developed a hashmap to store the values and i.d's.
+Regular expressions to extract data from the corpus
+Hashmap of terms -> ID
+Hashmaps of documents -> ID
+Hashmaps of terms -> term_node
+
 While we're iterating through the corpus.
 
 Initalized the stop.words, and retrieved the names of all files to be indexed within the folder ./ap89_collection_small of the current directory.
@@ -32,18 +37,9 @@ Add the position of the counter
 Add the total words
 
 
-
-#Extra Credit
-Open the index file up, and traverse 
-Check if a query is valid. 
-
-
-
-Regular expressions to extract data from the corpus
-Hashmap of terms -> ID
-Hashmaps of documents -> ID
-Hashmaps of terms -> term_node
-
+For the Extra Credit
+Open the index file up, and traverse. 
+Build term_index.txtand then Build the docids.txt while traversing, along with the termidis.txt.
 
 
 We developed this in python, and you must the download packages for installing NLTK. 
