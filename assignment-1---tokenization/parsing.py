@@ -101,12 +101,14 @@ for line in stop_file:
     stop_words.add(line)
 stop_file.close()
 
+with zipfile.ZipFile("ap89_collection_small.zip", 'r') as zip_ref:
+    zip_ref.extractall()
+   
 # Retrieve the names of all files to be indexed in folder ./ap89_collection_small of the current directory
 for dir_path, dir_names, file_names in os.walk("ap89_collection_small"):
     allfiles = [os.path.join(dir_path, filename).replace("\\", "/") for filename in file_names if (filename != "readme" and filename != ".DS_Store")]
-
-print("* Parsing Started *")
     
+print("* Parsing Started *")
 for file in allfiles:
     with open(file, 'r', encoding='ISO-8859-1') as f:
         filedata = f.read()
