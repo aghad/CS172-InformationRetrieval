@@ -39,10 +39,10 @@ Check if a query is valid.
 
 
 
-#Regular expressions to extract data from the corpus
-#Hashmap of terms -> ID
-#Hashmaps of documents -> ID
-#Hashmaps of terms -> term_node
+Regular expressions to extract data from the corpus
+Hashmap of terms -> ID
+Hashmaps of documents -> ID
+Hashmaps of terms -> term_node
 
 
 
