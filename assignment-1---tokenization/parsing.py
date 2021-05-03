@@ -9,12 +9,7 @@ import zipfile
 doc_regex = re.compile("<DOC>.*?</DOC>", re.DOTALL)
 docno_regex = re.compile("<DOCNO>.*?</DOCNO>")
 text_regex = re.compile("<TEXT>.*?</TEXT>", re.DOTALL)
-token_regex = re.compile(r"\w+(\.?\'?\w+)*")
-
-
-with zipfile.ZipFile("ap89_collection_small.zip", 'r') as zip_ref:
-    zip_ref.extractall()
-   
+token_regex = re.compile(r"\w+(\.?\'?\,?\w+)*")
 
 # Initialize all the global variables
 doc_ID_counter = 1
@@ -32,13 +27,9 @@ stemmer = PorterStemmer()
 
 # Initialize classes
 class Posting_Node:
-    def __init__(self, ID, total_words = 0, positions = []):
+    def __init__(self, ID):
         self.ID = ID
-        self.total_words = total_words
-        self.positions = positions
-        
-    def set_Total_Words(self, total_words):
-        self.total_words = total_words
+        self.positions = []
         
     def add_Position(self, position):
         self.positions.append(position)
@@ -47,29 +38,22 @@ class Posting_Node:
         return self.ID
     
     def get_Frequency(self):
-        return len(positions)/total_words
-        
-    def get_Total_Words(self):
-        return self.total_words
+        return len(self.positions)
         
     def get_Positions(self):
         return self.positions
         
 class Term_Node:
-    def __init__(self, ID, posting_list = dict()):
+    def __init__(self, ID):
         self.ID = ID
         
         # A hashmap of docID -> Posting_Node
-        self.posting_list = posting_list  
+        self.posting_list = dict()
         
     def add_Position(self, docID, position):
         if docID not in self.posting_list:
             self.posting_list[docID] = Posting_Node(docID)
         self.posting_list[docID].add_Position(position)
-        
-    def set_Total_Words(self, docID, total_words):
-        if docID in self.posting_list:
-            self.posting_list[docID].set_Total_Words(total_words)
     
     def get_ID(self):
         return self.ID
@@ -79,8 +63,8 @@ class Term_Node:
     
     def get_Occurrences(self):
         occurrences = 0
-        for key in posting_list:
-            occurrences = occurrences + len(key.get_Positions())
+        for key in self.posting_list:
+            occurrences = occurrences + self.posting_list[key].get_Frequency()
         return occurrences
     
     def get_Posting_List(self):
@@ -125,12 +109,15 @@ for file in allfiles:
             doc_ID_counter = doc_ID_counter + 1
             
             ## CHECK TO BE DELETED
-            if (doc_Index[docno] >= 2):
-                continue
+            # if (doc_Index[docno] >= 2):
+                # continue
             
             
             ## Lowercase the word
             text = text.lower();
+            
+            ## Remove underscores (\w allows underscores for some reason)
+            text = text.replace("_","")
 
             ## Process  the text string
             print(docno, ":");
@@ -168,27 +155,46 @@ for file in allfiles:
                     term_Info[term_Index[token]] = Term_Node(term_Index[token])
                 
                 ### Add this position
+                # print(token, " ", term_Index[token], " ", pos_counter)
                 term_Info[term_Index[token]].add_Position(doc_Index[docno], pos_counter)
-                ### Add the total words
-                term_Info[term_Index[token]].set_Total_Words(doc_Index[docno], len(tokens))
                 
                 pos_counter = pos_counter + 1
                 
 # Part Extra Credit
 
 ## Building term_index.txt
+byte_counter = 0
+offset = 0
+
 term_Index_file = open("term_index.txt","w")
+term_Info_file = open("term_info.txt","w")
+
 for term_name in term_Index:
+    offset = byte_counter
+    
     term_Index_file.write(str(term_Index[term_name]))
+    byte_counter = byte_counter + len(str(term_Index[term_name]))
+    
     for posting_node_key in term_Info[term_Index[term_name]].get_Posting_List():
         posting_node = term_Info[term_Index[term_name]].get_Posting_List()[posting_node_key]
         for position in posting_node.get_Positions():
+        
             term_Index_file.write("\t" + str(posting_node.get_ID()) + ":" + str(position))
-    term_Index_file.write("\n")
+            byte_counter = byte_counter + len(str(posting_node.get_ID())) + len(str(position)) + 2
             
+    term_Index_file.write("\n")
+    byte_counter = byte_counter + 2
+    
+    ## Building term_info.txt
+    term_Info_file.write(str(term_Index[term_name]) + "\t" + str(offset) + "\t" + str(term_Info[term_Index[term_name]].get_Occurrences()) + "\t" + str(term_Info[term_Index[term_name]].get_Documents()) + "\n")
+
 term_Index_file.close()
+term_Info_file.close()
 
 ## Building term_info.txt
+# readding = open("term_index.txt","r")
+# readding.seek(14)
+# print(readding.readline())
 
 ## Building docids.txt
 docids_file = open("docids.txt","w")
@@ -201,4 +207,8 @@ termids_file = open("termids.txt","w")
 for term_name in term_Index:
     termids_file.write(str(term_Index[term_name]) + "\t" + str(term_name) + "\n")
 termids_file.close()
-            
+
+def process_commands(**kwargs):
+    print("hi")
+    
+

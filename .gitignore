@@ -5,6 +5,8 @@
 /assignment-1---tokenization/ap89_collection_small/
 /assignment-1---tokenization/.DS_Store
 
+/assignment-1---tokenization/__pycache__/
 /assignment-1---tokenization/docids.txt
 /assignment-1---tokenization/term_index.txt
 /assignment-1---tokenization/termids.txt
+/assignment-1---tokenization/term_info.txt
