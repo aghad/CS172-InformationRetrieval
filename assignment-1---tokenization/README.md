@@ -5,9 +5,13 @@
 
 ## How to use
 We developed this in python, and you must the download packages for installing NLTK. 
+
 Here are the instructions. 
+
 Installing NLTK on Windows 10
+
 Step 1: Check Python Version.
+
 "$python --version"
 Step 2: Install Numpy
 "$pip install numpy"
